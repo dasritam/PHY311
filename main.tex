@@ -1,0 +1,115 @@
+\documentclass{article}[11pt]
+\usepackage[utf8]{inputenc}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsfonts, amsmath, amssymb, hyperref, xcolor}
+
+\title{\bf{PHY311 - Advanced Optics and Spectroscopy Lab \\ Lab 1 \\ Gaussian Beam Propagation}}
+\author{Chinmayi Subramanya \\ MS19045}
+\date{26th September 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction and Theory}
+In laser physics, laser beams often occur in the form of Gaussian beams, named after German mathematcian and physicist Carl Gauss. It is where the transverse profile of the optical intensity of the beam is described by a Gaussian function. 
+$$\frac{E(x,y,z)}{E_0} = \frac{w_0}{w_z} exp \left( - \frac{r^2}{w^2 (z)} \right) \times exp \left( -j \left[ kz - \tan^{-1} \left( \frac{z}{z_0} \right) \right] \right) \times exp \left( -j \frac{kr^2}{2Rz} \right)$$
+where,
+\medskip
+\\
+$\dfrac{w_0}{w_z} exp \left( - \dfrac{r^2}{w^2 (z)} \right)$ is the {\bf amplitude factor}. It describes the beam length.
+\medskip
+\\
+$exp \left( -j \left[ kz - \tan^{-1} \left( \dfrac{z}{z_0} \right) \right] \right)$ is the {\bf longitudinal phase factor}. It describes the shift from plane to spherical wave.
+\medskip
+\\
+$exp \left( -j \dfrac{kr^2}{2Rz} \right)$ is the {\bf radial phase factor}. It describes the phase shifts due to measuring a spherical surface on a plane. 
+
+\bigskip
+\noindent
+Here, 
+\\
+$z = 0$ is the place where the diameter of the beam is the smallest
+\\
+$w_0$ is the beam waist, the diameter of the smallest part of the beam
+
+\bigskip
+\noindent
+We also have,
+$$w^2 (z) = w_0^2 \left( 1 + \frac{\lambda z}{\pi n w_0^2} \right) = w_0^2 \left[ 1 + \left( \frac{z}{z_0} \right)^2 \right]$$
+Radius of curvature of the wavefront evolves as -
+$$R(z) = z \left( 1 + \frac{\pi n w_0^2}{\lambda z} \right) = z \left[ 1 + \left( \frac{z_0}{z} \right)^2 \right]$$
+
+\medskip
+\noindent
+Thus, the only parameters that describe a Gaussian beam are the beam waist $w_0$, position $z$, $z_0$ and wavelength of the light $\lambda$. 
+
+\medskip
+\noindent
+The divergence of the beam is given as
+$$\theta = \frac{\lambda}{\pi n w_0}$$
+The quantity $\theta w_0$ is called the {\bf beam parameter product} and depends only on wavelength $\lambda$.
+ 
+\newpage
+
+\section{Interaction of Gaussian Beams with Optics}
+Here we look into how a laser beam interacts with an optical system such as a lens.
+\medskip
+\\
+The q factor is given by 
+$$\frac{1}{q(z)} = \frac{1}{R(z)} - j \frac{\lambda}{\pi n w^2(z)}$$
+This consists of both real and imaginary parts. 
+
+\subsection{ABCD Matrix}
+The ABCD matrix is a 2x2 matrix associated with an optical element which describes the effect of the element on a laser beam. It is also called the Ray Transfer Matrix Analysis. It is used to calculate the propagation of a beam which has a transverse offset $r$ and offset angle $\theta$. When the angles are small (paraxial approximation), we have a linear relation between the offset quantities before and after propagation through an element -
+$$\begin{pmatrix}
+r' \\ \theta'
+\end{pmatrix} = 
+\begin{pmatrix}
+A & B \\ C & D
+\end{pmatrix}
+\begin{pmatrix}
+r \\ \theta
+\end{pmatrix}$$
+The ABCD matrix is unique to each optical element.
+\medskip
+\\
+For a Gaussian beam, the output q factor is given by -
+$$\frac{1}{q_{out}} = \frac{C q_{in} + D}{A q_{in} + B}$$
+\\
+The optical element changes the waist of the beam. To calculate the new waist $w_0$, which is at a new distance $z$, we split $\frac{1}{q_{out}}$ into its real and imaginary parts. So we define -
+\begin{align*}
+    X = \frac{1}{R(z)} &\implies R(z) = \frac{1}{X} = z \left[ 1 + \left( \frac{\pi n w_0^2}{\lambda z} \right)^2 \right] \\
+    Y = \frac{\lambda}{\pi n w^2(z)} &\implies w^2 (z) = \frac{\lambda}{\pi n Y} = w_0^2 \left( 1 + \frac{\lambda z}{\pi n w_0^2} \right) \\
+\end{align*}
+Solving these two equations gives the new waist and position respectively.
+\medskip
+\\
+Limitations of the ABCD matrix theory include -
+\begin{itemize}
+    \item It only holds for an ideal lens that has perfectly spherical wavefronts. 
+    
+    \item It only holds for a beam propagating through the axis of the lens.
+    
+    \item It uses paraxial approimation, so it does not hold for lenses that have larger curvature.
+    
+    \item It does not hold for abberated systems.
+\end{itemize}
+
+
+\section{References}
+\begin{enumerate}
+    \item \href{https://www.youtube.com/watch?v=tmO3LK-YVzM&t=1s}{\textcolor{blue}{Propagation of Gaussian Beam - Part I}}, {\it kridnix}, YouTube
+    
+    \item \href{https://www.youtube.com/watch?v=tmO3LK-YVzM&t=1s}{\textcolor{blue}{Propagation of Gaussian Beam - Part II}}, {\it kridnix}, YouTube
+    
+    \item \href{https://www.rp-photonics.com/gaussian_beams.html}{\textcolor{blue}{Gaussian Beams}}, RP Photonics Encyclopedia
+    
+    \item \href{https://www.rp-photonics.com/abcd_matrix.html}{\textcolor{blue}{ABCD Matrix}}, RP Photonics Encyclopedia
+    
+    \item \href{https://www.youtube.com/watch?v=vreRlcbAAa0}{\textcolor{blue}{Interaction of Gaussian Beams with Optics- Part I}}, {\it kridnix}, YouTube
+    
+    \item \href{https://www.youtube.com/watch?v=Co_fLz4K3Ko}{\textcolor{blue}{Interaction of Gaussian Beams with Optics- Part II}}, {\it kridnix}, YouTube
+\end{enumerate}
+
+\end{document}
